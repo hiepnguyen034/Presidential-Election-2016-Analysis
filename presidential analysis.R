@@ -56,7 +56,7 @@ df %>%
         group_by(CAND_NAME) %>%
         summarize(total_amount=sum(TRANSACTION_AMT),total_donation=n()) -> popular
 #This is a data frame that include all candidates' names and the number of donations  made to a candidate as well
-#as total money of donations that his candidate has
+#as total money of donations that this candidate has
 
 #Cleaning data, dividing data sets into weeks, focusing on the statistics of top 9 candidates of each party and plotting.
 df_d<-filter(df,CAND_PTY_AFFILIATION=="DEM")
@@ -147,7 +147,7 @@ rbind(as.data.frame(weekly_r_rank_9),as.data.frame(weekly_r_rank_non_9))->plot_r
 #Combine top-9 data frame and Others dataframe to plot
 ggplot(plot_r, aes(week,Donations,color=CAND_NAME)) + geom_line(bins = 45)
 
-#4
+
 df%>%
         group_by(STATE,CAND_NAME)%>%
         summarize(Donations=sum(TRANSACTION_AMT),Number_of_donations=n())->by_state#Aggregate the total number of donations and amount raised by candiates each state
